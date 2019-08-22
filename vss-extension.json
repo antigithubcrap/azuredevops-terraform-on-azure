@@ -1,0 +1,70 @@
+{
+    "manifestVersion": 1,
+    "id": "terraform-on-azure",
+    "version": "0.0.2",
+    "name": "Terraform on Azure",
+    "publisher": "x-commerce-labs",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "description": "CI/CD task for using Terraform on Azure (with best practices).",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "Terraform",
+        "Azure Devops",
+        "Azure Pipelines",
+        "Visual Studio",
+        "Azure",
+        "IaC",
+        "Infrastructure as Code",
+        "Hashicorp",
+        "Marceline Abadeer",
+        "CI",
+        "CD",
+        "Deploy"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "links": {
+        "repository": {
+            "uri": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure"
+        },
+        "issues": {
+            "uri": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure/issues"
+        },
+        "support": {
+            "uri": "mailto:marcelinolopezchi@hotmail.com"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure"
+    },
+    "files": [
+        {
+            "path": "tasks"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "terraform-on-aws-tools-20180728",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/terraform-tools"
+            }
+        }
+    ]
+}
