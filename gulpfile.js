@@ -21,11 +21,10 @@ var paths = {
     }
 };
 
-// function copyApplyScripts () {
-//     return gulp.src(paths.scripts.srcApply)
-//         .pipe(gulp.dest(paths.scripts.destApply));
-        
-// };
+function copyApplyScripts () {
+    return gulp.src(paths.scripts.srcApply)
+        .pipe(gulp.dest(paths.scripts.destApply));
+};
 
 // function copyDestroyScripts () {
 //     return gulp.src(paths.scripts.srcDestroy)
@@ -44,9 +43,9 @@ function copyIcon () {
             height: 32
         }))
         .pipe(grename('icon.png'))
-        // .pipe(gulp.dest(paths.icon.destApply))
+        .pipe(gulp.dest(paths.icon.destApply))
         // .pipe(gulp.dest(paths.icon.destDestroy))
         .pipe(gulp.dest(paths.icon.destTools));
 };
 
-exports.default = parallel(/*copyApplyScripts, copyDestroyScripts,*/ copyToolsScripts, copyIcon);
+exports.default = parallel(copyApplyScripts, /*copyDestroyScripts,*/ copyToolsScripts, copyIcon);

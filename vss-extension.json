@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "terraform-on-azure",
-    "version": "0.0.2",
+    "version": "0.1.1",
     "name": "Terraform on Azure",
     "publisher": "x-commerce-labs",
     "targets": [
@@ -57,7 +57,17 @@
     ],
     "contributions": [
         {
-            "id": "terraform-on-aws-tools-20180728",
+            "id": "terraform-on-azure-apply-20180206",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/terraform-apply"
+            }
+        },
+        {
+            "id": "terraform-on-azure-tools-20180728",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
