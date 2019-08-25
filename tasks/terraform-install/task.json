@@ -1,0 +1,64 @@
+{
+    "id": "A81201AB-236E-4BA9-9A7C-687972FE6384",
+    "name": "terraform-on-azure-install",
+    "friendlyName": "Terraform on Azure - Install",
+    "description": "Run Terraform over your Linux build agent host on Azure (with best practices).",
+    "helpMarkDown": "[More Information](https://github.com/antigithubcrap/azuredevops-terraform-on-azure#readme)",
+    "category": "Azure Pipelines",
+    "visibility": [ "Build", "Release" ],
+    "author": "Marceline Abadeer - x-Commerce Labs",
+    "runsOn": [ "Agent" ],
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Terraform Install",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": true
+        }
+    ],
+    "inputs": [
+        {
+            "name": "versionPickList",
+            "type": "pickList",
+            "label": "Version to install",
+            "defaultValue": "lastVersion",
+            "required": true,
+            "helpMarkDown": "Terraform version to install.",
+            "options": {
+                "lastVersion": "Last version",
+                "customVersion": "Custom version"
+            },
+            "properties": {
+                "EditableOptions": false
+            }
+        },
+        {
+            "name": "customVersionString",
+            "type": "string",
+            "label": "Terraform version",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Terraform version to install [(list of versions here)](https://releases.hashicorp.com/terraform/).",
+            "visibleRule": "versionPickList == customVersion"
+        },
+        {
+            "name": "failOnStdErrBoolean",
+            "type": "boolean",
+            "label": "Fail on Standard Error",
+            "defaultValue": "false",
+            "required": false,
+            "helpMarkDown": "Check if you want to fail this task if any errors are written to the StandardError stream.",
+            "groupName": "advanced"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "terraforminstall.js"
+        }
+    }
+}

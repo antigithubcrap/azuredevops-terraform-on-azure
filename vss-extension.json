@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "terraform-on-azure",
-    "version": "0.1.1",
+    "version": "0.1.29",
     "name": "Terraform on Azure",
     "publisher": "x-commerce-labs",
     "targets": [
@@ -32,7 +32,10 @@
     ],
     "content": {
         "details": {
-            "path": "README.md"
+            "path": "tasks/README.md"
+        },
+        "license": {
+            "path": "LICENSE"
         }
     },
     "links": {
@@ -43,7 +46,7 @@
             "uri": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure/issues"
         },
         "support": {
-            "uri": "mailto:marcelinolopezchi@hotmail.com"
+            "uri": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure/issues"
         }
     },
     "repository": {
@@ -52,12 +55,22 @@
     },
     "files": [
         {
-            "path": "tasks"
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "tasks/terraform-apply"
+        },
+        {
+            "path": "tasks/terraform-tools"
+        },
+        {
+            "path": "tasks/terraform-install"
         }
     ],
     "contributions": [
         {
-            "id": "terraform-on-azure-apply-20180206",
+            "id": "terraform-on-azure-apply-20190822",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
@@ -67,13 +80,23 @@
             }
         },
         {
-            "id": "terraform-on-azure-tools-20180728",
+            "id": "terraform-on-azure-tools-20190822",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
                 "name": "tasks/terraform-tools"
+            }
+        },
+        {
+            "id": "terraform-on-azure-install-20190822",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/terraform-install"
             }
         }
     ]

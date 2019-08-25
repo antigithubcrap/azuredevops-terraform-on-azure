@@ -11,13 +11,16 @@ var paths = {
         srcDestroy: 'scripts/terraform-destroy/*.js',
         destDestroy: 'tasks/terraform-destroy',
         srcTools: 'scripts/terraform-tools/*.js',
-        destTools: 'tasks/terraform-tools'
+        destTools: 'tasks/terraform-tools',
+        srcInstall: 'scripts/terraform-install/*.js',
+        destInstall: 'tasks/terraform-install'
     },
     icon: {
         src: 'images/extension-icon.png',
         destApply: 'tasks/terraform-apply',
         destDestroy: 'tasks/terraform-destroy',
-        destTools: 'tasks/terraform-tools'
+        destTools: 'tasks/terraform-tools',
+        destInstall: 'tasks/terraform-install'
     }
 };
 
@@ -36,6 +39,11 @@ function copyToolsScripts () {
         .pipe(gulp.dest(paths.scripts.destTools));
 };
 
+function copyInstallScripts () {
+    return gulp.src(paths.scripts.srcInstall)
+        .pipe(gulp.dest(paths.scripts.destInstall));
+};
+
 function copyIcon () {
     return gulp.src(paths.icon.src)
         .pipe(gimageresize({
@@ -44,8 +52,8 @@ function copyIcon () {
         }))
         .pipe(grename('icon.png'))
         .pipe(gulp.dest(paths.icon.destApply))
-        // .pipe(gulp.dest(paths.icon.destDestroy))
-        .pipe(gulp.dest(paths.icon.destTools));
+        .pipe(gulp.dest(paths.icon.destTools))
+        .pipe(gulp.dest(paths.icon.destInstall));
 };
 
-exports.default = parallel(copyApplyScripts, /*copyDestroyScripts,*/ copyToolsScripts, copyIcon);
+exports.default = parallel(copyApplyScripts, copyToolsScripts, copyInstallScripts, copyIcon);

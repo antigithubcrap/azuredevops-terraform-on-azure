@@ -6,9 +6,13 @@ Terraform on Azure (with best practices) is a open-source and cross-platform Azu
 
 ## Tools  
 
-[TypeScript 3.5.3 or greater](https://www.npmjs.com/package/typescript) installable as NPM global package  
+[TypeScript 3.5.3 or greater](https://www.npmjs.com/package/typescript)  
+
+- **Typescript** can be installed using ´npm´, a component of Node.js by running ´npm i -g typscript´
 
 [tfx-cli 0.7.9 or greater](https://www.npmjs.com/package/tfx-cli) installable as NPM global package  
+
+- **tfx-cli** can be installed using ´npm´, a component of Node.js by running ´npm i -g tfx-cli
 
 [GraphicsMagick 1.3.33 Q16 or greater](http://www.graphicsmagick.org/)  
 

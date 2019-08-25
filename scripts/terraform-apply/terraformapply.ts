@@ -6,26 +6,30 @@ async function run() {
 
     try {
 
-        var templatesFilePath: string = tl.getPathInput('templatesFilePath', true, true);
+        var templatesFilePath: string = tl.getPathInput('templatesFilePath', false, true);
         var commandPickList: string = tl.getInput('commandPickList', true);
-        var terraformFilePath: string = tl.getPathInput('terraformFilePath', true, true);
+        var terraformFilePath: string = tl.getPathInput('terraformFilePath', false, true);
         var validateTemplatesBoolean: boolean = tl.getBoolInput('validateTemplatesBoolean', false);
         var failOnStdErrBoolean: boolean = tl.getBoolInput('failOnStdErrBoolean', false);
+
+        if (!tl.filePathSupplied('terraformFilePath')) {
+            var terraformFilePath: string = tl.which('terraform', true);
+        }
 
         tl.cd(templatesFilePath);
 
         await version(terraformFilePath, failOnStdErrBoolean);
 
-        await init(terraformFilePath, templatesFilePath, failOnStdErrBoolean);
+        await init(terraformFilePath, failOnStdErrBoolean);
 
         let commandResult: number = 0;
 
         switch (commandPickList) {
             case 'Plan':
-                commandResult = await plan(terraformFilePath, templatesFilePath, validateTemplatesBoolean, failOnStdErrBoolean);
+                commandResult = await plan(terraformFilePath, validateTemplatesBoolean, failOnStdErrBoolean);
                 break;
             case 'Apply':
-                commandResult = await apply(terraformFilePath, templatesFilePath, validateTemplatesBoolean, failOnStdErrBoolean);
+                commandResult = await apply(terraformFilePath, validateTemplatesBoolean, failOnStdErrBoolean);
                 break;
         }
 
@@ -38,55 +42,38 @@ async function run() {
 }
 
 async function version(terraformFilePath: string, failOnStdErrBoolean: boolean) {
-    
-    var terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
 
+    let terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
+    
     await terraformCommand
         .arg('--version')
         .exec(<any>{ failOnStdErr: failOnStdErrBoolean });
 }
 
-async function init(terraformFilePath: string, templatesFilePath: string, failOnStdErrBoolean: boolean) {
+async function init(terraformFilePath: string, failOnStdErrBoolean: boolean) {
     
-    var manageStateBoolean: boolean = tl.getBoolInput('manageStateBoolean', false);
-    var createBackendFileBoolean: boolean = tl.getBoolInput('createBackendFileBoolean', false);
-    var awsRegionString: string = tl.getInput('awsRegionString', manageStateBoolean);
-    var awsBucketNameString: string = tl.getInput('awsBucketNameString', manageStateBoolean);
-    var awsBucketTargeFolderString: string = tl.getInput('awsBucketTargeFolderString', manageStateBoolean);
+    var terraformBackendConfigurationFilePath: string = tl.getPathInput('terraformBackendConfigurationFilePath', false, true);
 
-    var terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
+    let terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
 
-    terraformCommand.arg('init');
-
-    if (manageStateBoolean) {
-
-        if (createBackendFileBoolean) {
-            
-            tl.writeFile('backend.tf', 'terraform { backend "azurerm" {} }');
-        }
-
-        terraformCommand
-            .arg('-backend-config=bucket=' + awsBucketNameString)
-            .arg('-backend-config=key=' + awsBucketTargeFolderString + '/terraform.tfstate')
-            .arg('-backend-config=region=' + awsRegionString)
-            .arg('-input=false');
-    }
+    terraformCommand
+        .arg('init')
+        .arg('-input=false')
+        .argIf(tl.filePathSupplied('terraformBackendConfigurationFilePath'), '-backend-config=' + terraformBackendConfigurationFilePath);
 
     await terraformCommand.exec(<any>{ failOnStdErr: failOnStdErrBoolean });
 }
 
-async function validate(terraformFilePath: string, templatesFilePath: string, failOnStdErrBoolean: boolean) {
+async function validate(terraformFilePath: string, failOnStdErrBoolean: boolean) {
     
     var validateTemplatesVariablesBoolean: boolean = tl.getBoolInput('validateTemplatesVariablesBoolean', false);
     var useVariablesFileBoolean: boolean = tl.getBoolInput('useVariablesFileBoolean', false);
     var variablesFilePath: string = tl.getPathInput('variablesFilePath', true, useVariablesFileBoolean);
 
-    var terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
+    let terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
 
     terraformCommand
-        .arg('validate')
-        .argIf(!validateTemplatesVariablesBoolean, '-check-variables=false')
-        .argIf(useVariablesFileBoolean, '-var-file=' + variablesFilePath);
+        .arg('validate');
 
     var variables = getVariables();
 
@@ -99,7 +86,7 @@ async function validate(terraformFilePath: string, templatesFilePath: string, fa
     return terraformCommand.exec(<any>{ failOnStdErr: failOnStdErrBoolean });
 }
 
-async function plan(terraformFilePath: string, templatesFilePath: string, validateTemplatesBoolean: boolean, failOnStdErrBoolean: boolean) {
+async function plan(terraformFilePath: string, validateTemplatesBoolean: boolean, failOnStdErrBoolean: boolean) {
 
     var saveGeneratedExecutionPlanBoolean: boolean = tl.getBoolInput('saveGeneratedExecutionPlanBoolean', false);
     var generatedExecutionPlanName: string = tl.getInput('generatedExecutionPlanName', saveGeneratedExecutionPlanBoolean);
@@ -108,7 +95,7 @@ async function plan(terraformFilePath: string, templatesFilePath: string, valida
 
     if (validateTemplatesBoolean) {
 
-        let validationResult: number = await validate(terraformFilePath, templatesFilePath, failOnStdErrBoolean);
+        let validationResult: number = await validate(terraformFilePath, failOnStdErrBoolean);
 
         console.log('Validation result: ' + validationResult);
 
@@ -119,9 +106,9 @@ async function plan(terraformFilePath: string, templatesFilePath: string, valida
             return new Promise<number>((resolve) => { resolve(validationResult); });
         }
     }
-    
-    var terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
 
+    var terraformCommand: tr.ToolRunner = tl.tool(terraformFilePath);
+    
     terraformCommand
         .arg('plan')
         .argIf(saveGeneratedExecutionPlanBoolean, '-out=' + generatedExecutionPlanName);
@@ -143,7 +130,7 @@ async function plan(terraformFilePath: string, templatesFilePath: string, valida
     return terraformCommand.exec(<any>{ failOnStdErr: failOnStdErrBoolean });
 }
 
-async function apply(terraformFilePath: string, templatesFilePath: string, validateTemplatesBoolean: boolean, failOnStdErrBoolean: boolean) {
+async function apply(terraformFilePath: string, validateTemplatesBoolean: boolean, failOnStdErrBoolean: boolean) {
     
     var useSavedExecutionPlanBoolean: boolean = tl.getBoolInput('useSavedExecutionPlanBoolean', false);
     var savedExecutionPlanName: string = tl.getInput('savedExecutionPlanName', useSavedExecutionPlanBoolean);
@@ -152,7 +139,7 @@ async function apply(terraformFilePath: string, templatesFilePath: string, valid
 
     if (validateTemplatesBoolean && !useSavedExecutionPlanBoolean) {
 
-        let validationResult: number = await validate(terraformFilePath, templatesFilePath, failOnStdErrBoolean);
+        let validationResult: number = await validate(terraformFilePath, failOnStdErrBoolean);
 
         console.log('Validation result: ' + validationResult);
 

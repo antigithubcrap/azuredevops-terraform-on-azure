@@ -1,8 +1,8 @@
 {
-  "name": "azuredevops-terraform-on-azure",
+  "name": "terraform-install",
   "version": "0.0.0",
   "description": "Azure Devops / Terraform on Azure",
-  "main": "index.js",
+  "main": "terraforminstall.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,14 +23,7 @@
     "url": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure/issues"
   },
   "homepage": "https://github.com/antigithubcrap/azuredevops-terraform-on-azure#readme",
-  "devDependencies": {
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.2",
-    "@types/q": "^1.5.2",
-    "gulp": "^4.0.2",
-    "gulp-image-resize": "^0.13.1",
-    "gulp-rename": "^1.4.0",
-    "mockery": "^2.1.0",
-    "q": "^1.5.1"
+  "dependencies": {
+    "azure-pipelines-task-lib": "^2.8.0"
   }
 }

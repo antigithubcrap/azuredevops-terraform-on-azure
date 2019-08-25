@@ -3,3 +3,4 @@ scripts/**/*.js
 tasks/**/*.js
 tasks/**/*.png
 **/*.vsix
+.taskkey

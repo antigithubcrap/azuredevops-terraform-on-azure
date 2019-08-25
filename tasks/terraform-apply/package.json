@@ -2,7 +2,7 @@
   "name": "terraform-apply",
   "version": "0.0.0",
   "description": "Azure Devops / Terraform on Azure",
-  "main": "index.js",
+  "main": "terraformapply.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

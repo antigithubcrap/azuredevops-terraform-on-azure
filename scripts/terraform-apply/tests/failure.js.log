@@ -1,0 +1,158 @@
+
+STDERR: internal/modules/cjs/loader.js:628
+    throw err;
+    ^
+
+Error: Cannot find module 'mockery'
+Require stack:
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js
+- E:\github\azuredevops-terraform-on-azure\scripts\terraform-apply\tests\failure.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:625:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:527:27)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Object.<anonymous> (E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js:3:15)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\mock-run.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\scripts\\terraform-apply\\tests\\failure.js'
+  ]
+}
+
+
+STDERR: internal/modules/cjs/loader.js:628
+    throw err;
+    ^
+
+Error: Cannot find module 'mockery'
+Require stack:
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js
+- E:\github\azuredevops-terraform-on-azure\scripts\terraform-apply\tests\failure.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:625:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:527:27)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Object.<anonymous> (E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js:3:15)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\mock-run.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\scripts\\terraform-apply\\tests\\failure.js'
+  ]
+}
+
+
+STDERR: internal/modules/cjs/loader.js:628
+    throw err;
+    ^
+
+Error: Cannot find module 'mockery'
+Require stack:
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js
+- E:\github\azuredevops-terraform-on-azure\scripts\terraform-apply\tests\failure.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:625:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:527:27)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Object.<anonymous> (E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js:3:15)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\mock-run.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\scripts\\terraform-apply\\tests\\failure.js'
+  ]
+}
+
+
+STDERR: internal/modules/cjs/loader.js:628
+    throw err;
+    ^
+
+Error: Cannot find module 'q'
+Require stack:
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\toolrunner.js
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\task.js
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-task.js
+- E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\mock-run.js
+- E:\github\azuredevops-terraform-on-azure\scripts\terraform-apply\tests\failure.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:625:15)
+    at Module._load (internal/modules/cjs/loader.js:527:27)
+    at Function.hookedLoader [as _load] (E:\github\azuredevops-terraform-on-azure\node_modules\mockery\mockery.js:111:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Object.<anonymous> (E:\github\azuredevops-terraform-on-azure\node_modules\azure-pipelines-task-lib\toolrunner.js:16:9)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Module._load (internal/modules/cjs/loader.js:556:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\toolrunner.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\task.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\mock-task.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\node_modules\\azure-pipelines-task-lib\\mock-run.js',
+    'E:\\github\\azuredevops-terraform-on-azure\\scripts\\terraform-apply\\tests\\failure.js'
+  ]
+}
+
+##vso[task.debug]agent.TempDirectory=undefined
+##vso[task.debug]agent.workFolder=undefined
+##vso[task.debug]loading inputs and endpoints
+##vso[task.debug]loaded 0
+##vso[task.debug]Agent.ProxyUrl=undefined
+##vso[task.debug]Agent.CAInfo=undefined
+##vso[task.debug]Agent.ClientCert=undefined
+##vso[task.debug]Agent.SkipCertValidation=undefined
+##vso[task.debug]task result: Failed
+##vso[task.issue type=error;]Input required: templatesFilePath
+##vso[task.complete result=Failed;]Input required: templatesFilePath
+
+##vso[task.debug]agent.TempDirectory=undefined
+##vso[task.debug]agent.workFolder=undefined
+##vso[task.debug]loading inputs and endpoints
+##vso[task.debug]loaded 0
+##vso[task.debug]Agent.ProxyUrl=undefined
+##vso[task.debug]Agent.CAInfo=undefined
+##vso[task.debug]Agent.ClientCert=undefined
+##vso[task.debug]Agent.SkipCertValidation=undefined
+##vso[task.debug]task result: Failed
+##vso[task.issue type=error;]Input required: templatesFilePath
+##vso[task.complete result=Failed;]Input required: templatesFilePath
+
+##vso[task.debug]agent.TempDirectory=undefined
+##vso[task.debug]agent.workFolder=undefined
+##vso[task.debug]loading inputs and endpoints
+##vso[task.debug]loaded 0
+##vso[task.debug]Agent.ProxyUrl=undefined
+##vso[task.debug]Agent.CAInfo=undefined
+##vso[task.debug]Agent.ClientCert=undefined
+##vso[task.debug]Agent.SkipCertValidation=undefined
+##vso[task.debug]task result: Failed
+##vso[task.issue type=error;]Input required: templatesFilePath
+##vso[task.complete result=Failed;]Input required: templatesFilePath
+
+##vso[task.debug]agent.TempDirectory=undefined
+##vso[task.debug]agent.workFolder=undefined
+##vso[task.debug]loading inputs and endpoints
+##vso[task.debug]loaded 0
+##vso[task.debug]Agent.ProxyUrl=undefined
+##vso[task.debug]Agent.CAInfo=undefined
+##vso[task.debug]Agent.ClientCert=undefined
+##vso[task.debug]Agent.SkipCertValidation=undefined
+##vso[task.debug]task result: Failed
+##vso[task.issue type=error;]Input required: templatesFilePath
+##vso[task.complete result=Failed;]Input required: templatesFilePath
+
