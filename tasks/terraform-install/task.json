@@ -1,5 +1,5 @@
 {
-    "id": "A81201AB-236E-4BA9-9A7C-687972FE6384",
+    "id": "A81201AB-236E-4BC9-9A7C-68797AFE6384",
     "name": "terraform-on-azure-install",
     "friendlyName": "Terraform on Azure - Install",
     "description": "Run Terraform over your Linux build agent host on Azure (with best practices).",

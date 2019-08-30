@@ -93,7 +93,7 @@ async function output(terraformFilePath: string, failOnStdErrBoolean: boolean) {
                     .execSync(<any>{ failOnStdErr: failOnStdErrBoolean });
 
                 if (splitedSetting.length == 2) {
-                    tl.setVariable(splitedSetting[1], splitedSetting[0], false);
+                    tl.setVariable(splitedSetting[1], output.stdout, false);
                 }
             }
         }
